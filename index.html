@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>羽毛球小游戏</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/ui-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <!-- 游戏标题 -->
+        <header class="game-header">
+            <h1 class="game-title">羽毛球小游戏</h1>
+            <div class="score-board">
+                <div class="score-item">
+                    <span class="score-label">玩家</span>
+                    <span class="score-value" id="playerScore">0</span>
+                </div>
+                <div class="score-divider">:</div>
+                <div class="score-item">
+                    <span class="score-label">电脑</span>
+                    <span class="score-value" id="aiScore">0</span>
+                </div>
+            </div>
+            <div class="match-info" id="matchInfo">第1局 | 局数: 0 - 0</div>
+        </header>
+
+        <!-- 游戏画布区域 -->
+        <main class="game-main">
+            <div class="canvas-container">
+                <canvas id="gameCanvas" width="800" height="600"></canvas>
+                <div class="loading-overlay" id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                    <p class="loading-text">正在加载Python环境...</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- 游戏控制面板 -->
+        <aside class="game-controls">
+            <div class="control-group">
+                <button class="btn btn-primary" id="startBtn">开始游戏</button>
+                <button class="btn btn-secondary" id="pauseBtn" disabled>暂停</button>
+                <button class="btn btn-secondary" id="resetBtn">重置</button>
+            </div>
+            
+            <div class="control-group">
+                <div class="instructions">
+                    <h3>游戏说明</h3>
+                    <ul>
+                        <li>使用 A/D 键或 ←/→ 键移动火柴人</li>
+                        <li>按空格键跳跃</li>
+                        <li>W键 或 上方向键：挥拍击球</li>
+                        <li>将球击到对方场地得分</li>
+                        <li>每局先达到11分获胜</li>
+                        <li>三局两胜制，先赢2局获得比赛胜利</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <h3>设置</h3>
+                <div class="setting-item">
+                    <label for="difficulty">难度:</label>
+                    <select id="difficulty" class="select-input">
+                        <option value="easy">简单</option>
+                        <option value="medium" selected>中等</option>
+                        <option value="hard">困难</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label for="soundToggle">音效:</label>
+                    <input type="checkbox" id="soundToggle" class="toggle-input" checked>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- 游戏结束弹窗 -->
+    <div class="modal" id="gameOverModal">
+        <div class="modal-content">
+            <h2 class="modal-title" id="gameOverTitle">游戏结束</h2>
+            <p class="modal-message" id="gameOverMessage">恭喜获胜！</p>
+            <div class="modal-actions">
+                <button class="btn btn-primary" id="playAgainBtn">再玩一局</button>
+                <button class="btn btn-secondary" id="closeModalBtn">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 游戏脚本 -->
+    <script src="js/auth.js"></script>
+    <script src="js/ui-manager.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
