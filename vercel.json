@@ -10,9 +10,7 @@
       "dest": "/$1"
     }
   ],
-  "env": {
-    "JWT_SECRET": "@jwt_secret"
-  },
+
   "functions": {
     "api/main.py": {
       "runtime": "python3.9",
